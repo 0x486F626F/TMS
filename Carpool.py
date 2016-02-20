@@ -129,8 +129,8 @@ class Carpool:
         available_list.sort(key = lambda x: x['info']['extra_time'])
         return available_list
 
-    def join_carpool(self, trip, passenger):
-        trip['trip'].join(passenger, trip['info']['index'])
+    def join_carpool(self, schedule, passenger):
+        schedule['trip'].join(passenger, schedule['info']['index'])
 
     def print_all_trip(self):
         for trip in self.scheduled_trips:
