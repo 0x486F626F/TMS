@@ -7,21 +7,19 @@ randint = numpy.random.randint
 
 carpool = Carpool()
 
-N_City = 20
+N_City = 10
 N_Passenger = 1000
-Range = 10
+Range = 5
 N_Trip = 0
 
 Cities = []
 
 def randLoc():
-    loc = Cities[randint(0, N_City)]
-    loc[0] += uniform(-Range, Range)
-    loc[1] += uniform(-Range, Range)
-    return loc
+    city = Cities[randint(0, N_City)]
+    return [city[0] + uniform(-Range, Range), city[1] + uniform(-Range, Range)]
 
 for i in range(N_City):
-    Cities.append([uniform(0, 100), uniform(0, 100)])
+    Cities.append([uniform(0, 200), uniform(0, 200)])
 
 for i in range(N_Passenger):
     origin = randLoc()
@@ -50,7 +48,4 @@ for trip in carpool.scheduled_trips:
 for city in Cities:
     plot(city[0], city[1], color = numpy.random.rand(3,1), marker = 'o')
 
-savefig('output.png', dpi=None, facecolor='w', edgecolor='w',
-        orientation='portrait', papertype=None, format=None,
-        transparent=False, bbox_inches=None, pad_inches=0.1,
-        frameon=None)
+savefig('output.eps', format='eps', dpi=1000)
